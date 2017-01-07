@@ -7,7 +7,7 @@ resolvers += "jgit-repo" at "http://download.eclipse.org/jgit/maven"
 
 addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")
 
-libraryDependencies <+= (sbtVersion) { sv =>
-  "org.scala-sbt" % "scripted-plugin" % sv
+libraryDependencies += {
+  "org.scala-sbt" % "scripted-plugin" % sbtVersion.value
 }
 
