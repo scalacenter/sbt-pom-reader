@@ -33,7 +33,4 @@ initialCommands in console :=
      | val pom = loadEffectivePom(pomFile, localRepo, Seq.empty, Map.empty)
      | """.stripMargin
 
-scriptedSettings
-
-scriptedLaunchOpts += { "-Dproject.version=" + version.value }
-
+scriptedLaunchOpts := scriptedLaunchOpts.value ++ Seq("-Dproject.version=" + version.value)
