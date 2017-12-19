@@ -1,15 +1,8 @@
 name := "sbt-pom-reader"
-
-organization := "com.typesafe.sbt"
-
-version := "2.1.0-RC2-SNAPSHOT"
-
+organization := "ch.epfl.scala"
 licenses +=("Apache-2.0", url("http://opensource.org/licenses/Apache-2.0"))
-
 sbtPlugin := true
-
-scalaVersion := "2.10.5"
-
+scalaVersion := "2.12.4"
 scalacOptions += "-target:jvm-1.6"
 
 val mvnVersion = "3.2.2"
