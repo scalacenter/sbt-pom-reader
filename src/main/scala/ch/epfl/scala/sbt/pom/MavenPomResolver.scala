@@ -1,4 +1,4 @@
-package com.typesafe.sbt.pom
+package ch.epfl.scala.sbt.pom
 
 import org.eclipse.aether.repository.RemoteRepository
 import org.apache.maven.model.Model

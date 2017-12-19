@@ -1,4 +1,4 @@
-package com.typesafe.sbt.pom
+package ch.epfl.scala.sbt.pom
 
 import java.lang.reflect.Field
 import java.security.AccessController

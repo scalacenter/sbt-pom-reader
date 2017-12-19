@@ -1,4 +1,4 @@
-package com.typesafe.sbt.pom
+package ch.epfl.scala.sbt.pom
 
 import sbt._
 import sbt.plugins.JvmPlugin

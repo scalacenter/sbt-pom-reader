@@ -1,4 +1,4 @@
-package com.typesafe.sbt
+package ch.epfl.scala.sbt
 
 import java.io.File
 

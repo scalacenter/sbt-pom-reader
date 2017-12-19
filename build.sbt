@@ -19,7 +19,7 @@ libraryDependencies ++= Seq(
 )
 
 initialCommands in console :=
-  """| import com.typesafe.sbt.pom._
+  """| import ch.epfl.scala.sbt.pom._
      | import sbt._
      | val localRepo = file(sys.props("user.home")) / ".m2" / "repository"
      | val pomFile = file("src/sbt-test/simple-pom/can-extract-basics/pom.xml")

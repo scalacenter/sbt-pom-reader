@@ -1,4 +1,4 @@
-package com.typesafe.sbt.pom
+package ch.epfl.scala.sbt.pom
 
 import org.apache.maven.model.building.{ FileModelSource, ModelSource }
 import org.apache.maven.model.resolution.{ ModelResolver, UnresolvableModelException }

@@ -1,4 +1,4 @@
-package com.typesafe.sbt.pom
+package ch.epfl.scala.sbt.pom
 
 import org.apache.maven.model.{Model ⇒ PomModel, Repository ⇒ PomRepository}
 import org.apache.maven.settings.building.{DefaultSettingsBuilderFactory, DefaultSettingsBuildingRequest}
