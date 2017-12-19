@@ -3,22 +3,46 @@ package ch.epfl.scala.sbt
 import java.io.File
 
 import org.apache.maven.repository.internal._
+import org.eclipse.aether.impl.{
+  ArtifactDescriptorReader,
+  DefaultServiceLocator,
+  MetadataGeneratorFactory,
+  VersionRangeResolver,
+  VersionResolver
+}
 import org.eclipse.aether.repository.LocalRepository
 import org.eclipse.aether.transport.wagon.WagonProvider
-import org.eclipse.aether.{RepositorySystem, RepositorySystemSession}
+import org.eclipse.aether.{
+  DefaultRepositorySystemSession,
+  RepositorySystem,
+  RepositorySystemSession
+}
 
 /** Helper methods for dealing with starting up Aether. */
 package object pom {
   def newRepositorySystemImpl: RepositorySystem = {
-    val locator = MavenRepositorySystemUtils.newServiceLocator()
+    val locator = new DefaultServiceLocator()
+    locator.addService(classOf[ArtifactDescriptorReader],
+                       classOf[DefaultArtifactDescriptorReader])
+    locator.addService(classOf[VersionResolver],
+                       classOf[DefaultVersionResolver])
+    locator.addService(classOf[VersionRangeResolver],
+                       classOf[DefaultVersionRangeResolver])
+    locator.addService(classOf[MetadataGeneratorFactory],
+                       classOf[SnapshotMetadataGeneratorFactory])
+    locator.addService(classOf[MetadataGeneratorFactory],
+                       classOf[VersionsMetadataGeneratorFactory])
     locator.setServices(classOf[WagonProvider], new HackedWagonProvider)
     locator.getService(classOf[RepositorySystem])
   }
 
-  def newSessionImpl(system: RepositorySystem, localRepoDir: File): RepositorySystemSession = {
-    val session = MavenRepositorySystemUtils.newSession()
-    val localRepo: LocalRepository = new LocalRepository(localRepoDir.getAbsolutePath)
-    session.setLocalRepositoryManager(system.newLocalRepositoryManager(session, localRepo))
+  def newSessionImpl(system: RepositorySystem,
+                     localRepoDir: File): RepositorySystemSession = {
+    val session = new DefaultRepositorySystemSession()
+    val localRepo: LocalRepository = new LocalRepository(
+      localRepoDir.getAbsolutePath)
+    session.setLocalRepositoryManager(
+      system.newLocalRepositoryManager(session, localRepo))
     session
   }
 
