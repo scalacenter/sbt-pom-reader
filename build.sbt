@@ -3,7 +3,6 @@ organization := "ch.epfl.scala"
 licenses +=("Apache-2.0", url("http://opensource.org/licenses/Apache-2.0"))
 sbtPlugin := true
 scalaVersion := "2.12.4"
-scalacOptions += "-target:jvm-1.6"
 releaseEarlyWith := SonatypePublisher
 
 val mvnVersion = "3.5.2"
