@@ -6,7 +6,6 @@ scalaVersion := "2.12.4"
 releaseEarlyWith := SonatypePublisher
 
 val mavenVersion = "3.5.2"
-val mvnWagonVersion = "3.0.0"
 val aetherVersion = "1.1.0"
 
 libraryDependencies ++= Seq(
