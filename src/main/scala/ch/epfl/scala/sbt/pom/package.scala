@@ -32,7 +32,6 @@ package object pom {
                        classOf[SnapshotMetadataGeneratorFactory])
     locator.addService(classOf[MetadataGeneratorFactory],
                        classOf[VersionsMetadataGeneratorFactory])
-    locator.setServices(classOf[WagonProvider], new HackedWagonProvider)
     locator.getService(classOf[RepositorySystem])
   }
 

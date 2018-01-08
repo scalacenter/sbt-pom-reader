@@ -5,23 +5,18 @@ sbtPlugin := true
 scalaVersion := "2.12.4"
 releaseEarlyWith := SonatypePublisher
 
-val aetherProviderVersion = "3.3.9"
+val mavenVersion = "3.5.2"
 val mvnWagonVersion = "3.0.0"
-val aetherVersion = "1.0.2.v20150114"
+val aetherVersion = "1.1.0"
 
 libraryDependencies ++= Seq(
-  "org.apache.maven" % "maven-embedder" % aetherProviderVersion,
-  "org.apache.maven" % "maven-aether-provider" % aetherProviderVersion,
-  "org.eclipse.aether" % "aether-transport-wagon" % aetherVersion,
-  "org.apache.maven.wagon" % "wagon-http" % mvnWagonVersion,
-  "org.apache.maven.wagon" % "wagon-http-lightweight" % mvnWagonVersion,
-  "org.apache.maven.wagon" % "wagon-file" % mvnWagonVersion
-)
+  "org.apache.maven" % "maven-embedder" % mavenVersion,
+  "org.apache.maven" % "maven-resolver-provider" % mavenVersion,
 
-dependencyOverrides ++= Seq(
-  "org.apache.maven" % "maven-embedder" % aetherProviderVersion,
-  "org.apache.maven" % "maven-aether-provider" % aetherProviderVersion,
-  "org.eclipse.aether" % "aether-transport-wagon" % aetherVersion
+  "org.apache.maven.resolver" % "maven-resolver" % aetherVersion,
+  "org.apache.maven.resolver" % "maven-resolver-transport-wagon" % aetherVersion,
+  "org.apache.maven.resolver" % "maven-resolver-transport-http" % aetherVersion,
+  "org.apache.maven.resolver" % "maven-resolver-transport-file" % aetherVersion,
 )
 
 update := update.dependsOn(evicted).value
