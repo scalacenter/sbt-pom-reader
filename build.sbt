@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "org.apache.maven.resolver" % "maven-resolver-transport-wagon" % aetherVersion,
   "org.apache.maven.resolver" % "maven-resolver-transport-http" % aetherVersion,
   "org.apache.maven.resolver" % "maven-resolver-transport-file" % aetherVersion,
+  "org.apache.maven.resolver" % "maven-resolver-connector-basic" % aetherVersion,
 )
 
 update := update.dependsOn(evicted).value

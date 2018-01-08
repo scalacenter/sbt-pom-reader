@@ -11,7 +11,8 @@ import org.eclipse.aether.impl.{
   VersionResolver
 }
 import org.eclipse.aether.repository.LocalRepository
-import org.eclipse.aether.transport.wagon.WagonProvider
+import org.eclipse.aether.spi.connector.RepositoryConnectorFactory
+import org.eclipse.aether.connector.basic.BasicRepositoryConnectorFactory
 import org.eclipse.aether.{
   DefaultRepositorySystemSession,
   RepositorySystem,
@@ -32,6 +33,8 @@ package object pom {
                        classOf[SnapshotMetadataGeneratorFactory])
     locator.addService(classOf[MetadataGeneratorFactory],
                        classOf[VersionsMetadataGeneratorFactory])
+    locator.addService(classOf[RepositoryConnectorFactory],
+                       classOf[BasicRepositoryConnectorFactory])
     locator.getService(classOf[RepositorySystem])
   }
 
@@ -50,6 +53,12 @@ package object pom {
     file(sys.props("user.home")) / ".m2" / "repository"
   }
 
-  def loadEffectivePom(pom: File, localRepo: File = defaultLocalRepo, profiles: Seq[String], userProps: Map[String, String]) =
-    MavenPomResolver(localRepo).loadEffectivePom(pom, Seq.empty, profiles, userProps)
+  def loadEffectivePom(pom: File,
+                       localRepo: File = defaultLocalRepo,
+                       profiles: Seq[String],
+                       userProps: Map[String, String]) =
+    MavenPomResolver(localRepo).loadEffectivePom(pom,
+                                                 Seq.empty,
+                                                 profiles,
+                                                 userProps)
 }
