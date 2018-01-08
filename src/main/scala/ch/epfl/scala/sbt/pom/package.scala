@@ -13,6 +13,9 @@ import org.eclipse.aether.impl.{
 import org.eclipse.aether.repository.LocalRepository
 import org.eclipse.aether.spi.connector.RepositoryConnectorFactory
 import org.eclipse.aether.connector.basic.BasicRepositoryConnectorFactory
+import org.eclipse.aether.spi.connector.transport.TransporterFactory
+import org.eclipse.aether.transport.file.FileTransporterFactory
+import org.eclipse.aether.transport.http.HttpTransporterFactory
 import org.eclipse.aether.{
   DefaultRepositorySystemSession,
   RepositorySystem,
@@ -35,6 +38,10 @@ package object pom {
                        classOf[VersionsMetadataGeneratorFactory])
     locator.addService(classOf[RepositoryConnectorFactory],
                        classOf[BasicRepositoryConnectorFactory])
+    locator.addService(classOf[TransporterFactory],
+                       classOf[FileTransporterFactory])
+    locator.addService(classOf[TransporterFactory],
+                       classOf[HttpTransporterFactory])
     locator.getService(classOf[RepositorySystem])
   }
 
