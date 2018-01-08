@@ -5,7 +5,7 @@ sbtPlugin := true
 scalaVersion := "2.12.4"
 releaseEarlyWith := SonatypePublisher
 
-val aetherProviderVersion = "3.2.2"
+val aetherProviderVersion = "3.3.9"
 val mvnWagonVersion = "3.0.0"
 val aetherVersion = "1.0.2.v20150114"
 
@@ -23,6 +23,8 @@ dependencyOverrides ++= Seq(
   "org.apache.maven" % "maven-aether-provider" % aetherProviderVersion,
   "org.eclipse.aether" % "aether-transport-wagon" % aetherVersion
 )
+
+update := update.dependsOn(evicted).value
 
 initialCommands in console :=
   """| import ch.epfl.scala.sbt.pom._
