@@ -5,7 +5,6 @@ sbtPlugin := true
 scalaVersion := "2.12.4"
 releaseEarlyWith := SonatypePublisher
 
-val mvnVersion = "3.5.2"
 val aetherProviderVersion = "3.3.9"
 val mvnWagonVersion = "2.10"
 val aetherVersion = "1.0.2.v20150114"
@@ -17,6 +16,10 @@ libraryDependencies ++= Seq(
   "org.apache.maven.wagon" % "wagon-http" % mvnWagonVersion,
   "org.apache.maven.wagon" % "wagon-http-lightweight" % mvnWagonVersion,
   "org.apache.maven.wagon" % "wagon-file" % mvnWagonVersion
+)
+
+dependencyOverrides ++= Seq(
+  "org.eclipse.aether" % "aether-transport-wagon" % aetherVersion
 )
 
 initialCommands in console :=
