@@ -35,7 +35,7 @@ class MavenModelResolver(
     new FileModelSource(pomArtifact.getFile)
   }
 
-  override def resolveModel(dependency: Dependency): ModelSource =
+  def resolveModel(dependency: Dependency): ModelSource =
     resolveModel(dependency.getGroupId, dependency.getArtifactId, dependency.getVersion)
 
   override def resolveModel(parent: Parent): ModelSource =

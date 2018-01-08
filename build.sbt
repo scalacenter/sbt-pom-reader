@@ -7,17 +7,16 @@ releaseEarlyWith := SonatypePublisher
 
 val mvnVersion = "3.5.2"
 val aetherProviderVersion = "3.3.9"
-val mvnWagonVersion = "3.0.0"
-val aetherVersion = "1.1.0"
+val mvnWagonVersion = "2.10"
+val aetherVersion = "1.0.2.v20150114"
 
 libraryDependencies ++= Seq(
-  "org.apache.maven" % "maven-embedder" % mvnVersion,
+  "org.apache.maven" % "maven-embedder" % aetherProviderVersion,
   "org.apache.maven" % "maven-aether-provider" % aetherProviderVersion,
   "org.eclipse.aether" % "aether-transport-wagon" % aetherVersion,
   "org.apache.maven.wagon" % "wagon-http" % mvnWagonVersion,
   "org.apache.maven.wagon" % "wagon-http-lightweight" % mvnWagonVersion,
-  "org.apache.maven.wagon" % "wagon-file" % mvnWagonVersion,
-  "org.apache.maven.plugin-tools" % "maven-plugin-tools-api" % "3.5",
+  "org.apache.maven.wagon" % "wagon-file" % mvnWagonVersion
 )
 
 initialCommands in console :=
